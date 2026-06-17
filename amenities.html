@@ -50,6 +50,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 20px;
+            position: relative;
         }
 
         .logo {
@@ -100,6 +101,19 @@
         .cta-btn:hover {
             background-color: var(--primary-dark);
             color: white;
+        }
+
+        /* Mobile Menu Toggle Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 5px;
+            outline: none;
         }
 
         /* Amenities Hero Header */
@@ -202,14 +216,57 @@
 
         /* Responsive Design */
         @media (max-width: 968px) {
-            nav ul {
-                display: none;
-            }
             .amenities-hero h1 {
                 font-size: 32px;
             }
             .amenities-grid {
                 grid-template-columns: 1fr;
+            }
+
+            /* Responsive Dropdown Navigation Rules */
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.98);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-in-out;
+            }
+
+            nav.active {
+                max-height: 350px;
+                border-bottom: 3px solid var(--primary);
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                padding: 10px 0;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+
+            nav a {
+                display: block;
+                padding: 15px 0;
+                width: 100%;
+            }
+
+            .cta-btn {
+                display: inline-block;
+                width: 80%;
+                margin: 10px auto;
+                border-radius: 25px;
             }
         }
     </style>
@@ -222,11 +279,16 @@
                 <img src="kund coffee logo1.webp" alt="Kund Coffee Logo">
                 <span class="logo-text">KUND COFFEE</span>
             </a>
-            <nav>
-               <ul>
+            
+            <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav id="nav-menu">
+                <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="space.html">Our Space</a></li>
-                    <li><a href="amenities.html">Amenities</a></li>
+                    <li><a href="amenities.html" style="color: var(--primary);">Amenities</a></li>
                     <li><a href="contact.html" class="cta-btn">Visit Us</a></li>
                 </ul>
             </nav>
@@ -296,5 +358,33 @@
         <p>&copy; 2026 Kund Coffee. All rights reserved. Designed for Productivity.</p>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const navMenu = document.getElementById('nav-menu');
+            const toggleIcon = menuBtn.querySelector('i');
+
+            menuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    toggleIcon.className = 'fa-solid fa-xmark';
+                } else {
+                    toggleIcon.className = 'fa-solid fa-bars';
+                }
+            });
+
+            // Auto Close drop-down structural container when selecting internal navigation items
+            const navLinks = navMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        toggleIcon.className = 'fa-solid fa-bars';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
