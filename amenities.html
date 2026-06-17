@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amenities | Kund Coffee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #C32026; /* Logo Red */
+            --primary-dark: #8A1418;
+            --text-dark: #2C2C2C;
+            --text-light: #666666;
+            --bg-light: #F9F9F9;
+            --bg-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .cta-btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+        /* Amenities Hero Header */
+        .amenities-hero {
+            padding-top: 160px;
+            padding-bottom: 60px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(195,32,38,0.03) 0%, rgba(255,255,255,1) 100%);
+        }
+
+        .amenities-hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .amenities-hero h1 span {
+            color: var(--primary);
+        }
+
+        .amenities-hero p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Amenities Showcase Grid */
+        .amenities-section {
+            padding: 40px 20px 100px;
+        }
+
+        .amenities-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .amenity-card {
+            background-color: var(--bg-white);
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            border-top: 4px solid transparent;
+        }
+
+        .amenity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            border-top-color: var(--primary);
+        }
+
+        .icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(195, 32, 38, 0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+
+        .icon-wrapper i {
+            font-size: 26px;
+            color: var(--primary);
+        }
+
+        .amenity-card h3 {
+            font-size: 22px;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .amenity-card p {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1A1A1A;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            nav ul {
+                display: none;
+            }
+            .amenities-hero h1 {
+                font-size: 32px;
+            }
+            .amenities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="kund coffee logo1.webp" alt="Kund Coffee Logo">
+                <span class="logo-text">KUND COFFEE</span>
+            </a>
+            <nav>
+               <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="space.html">Our Space</a></li>
+                    <li><a href="amenities.html">Amenities</a></li>
+                    <li><a href="contact.html" class="cta-btn">Visit Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="amenities-hero">
+        <h1>Premium <span>Workspace Perks</span></h1>
+        <p>Everything you need to unleash your productivity and support your daily workflow. Explore the premium amenities available at Kund Coffee.</p>
+    </section>
+
+    <section class="amenities-section">
+        <div class="amenities-grid">
+            
+            <div class="amenity-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+                <h3>High-Speed, Reliable Internet</h3>
+                <p>Ensures members can work efficiently and stay connected with ultra-fast download and upload speeds perfectly configured for seamless calls and task workflows.</p>
+            </div>
+
+            <div class="amenity-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-chair"></i>
+                </div>
+                <h3>Comfortable, Ergonomic Furniture</h3>
+                <p>Supports the well-being of members during long work sessions, featuring adaptive seating profiles and spacious desk heights designed for optimal back health.</p>
+            </div>
+
+            <div class="amenity-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <h3>Private Meeting Spaces</h3>
+                <p>Allows members to collaborate or make confidential business calls in a professional setting without worrying about ambient coffee shop background noises.</p>
+            </div>
+
+            <div class="amenity-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-print"></i>
+                </div>
+                <h3>Essential Office Equipment</h3>
+                <p>Includes high-performance printers, scanning units, collaborative dry-erase whiteboards, and fully stocked basic stationery supplies on standby.</p>
+            </div>
+
+            <div class="amenity-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-display"></i>
+                </div>
+                <h3>Well-Equipped Meeting Rooms</h3>
+                <p>With display screens, premium acoustic soundproofing, and flexible multiple booking options tailored for fluid team collaboration and deep private discussions.</p>
+            </div>
+
+            <div class="amenity-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-couch"></i>
+                </div>
+                <h3>Break Areas & Lounges</h3>
+                <p>Provide intentional, comfortable relaxation zones for members to comfortably step away from their digital monitors, clear their focus matrix, and quickly recharge.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Kund Coffee. All rights reserved. Designed for Productivity.</p>
+    </footer>
+
+</body>
+</html>

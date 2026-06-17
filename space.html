@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Space | Kund Coffee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #C32026; /* Logo Red */
+            --primary-dark: #8A1418;
+            --text-dark: #2C2C2C;
+            --text-light: #666666;
+            --bg-light: #F9F9F9;
+            --bg-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .cta-btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+        /* Space Hero Header */
+        .space-hero {
+            padding-top: 160px;
+            padding-bottom: 60px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(195,32,38,0.03) 0%, rgba(255,255,255,1) 100%);
+        }
+
+        .space-hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .space-hero h1 span {
+            color: var(--primary);
+        }
+
+        .space-hero p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Space Showcase Layout */
+        .space-showcase-section {
+            padding: 40px 20px 100px;
+        }
+
+        .space-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        .space-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .space-row.reverse {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .space-row.reverse .space-img-wrapper {
+            order: 2;
+        }
+
+        .space-img-wrapper {
+            position: relative;
+        }
+
+        .space-img-wrapper img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .space-description h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .space-description h2::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+            margin-top: 10px;
+            border-radius: 2px;
+        }
+
+        .space-description p {
+            color: var(--text-light);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .space-features-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .space-features-list li {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .space-features-list li i {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1A1A1A;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .space-row, .space-row.reverse {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .space-row.reverse .space-img-wrapper {
+                order: 0;
+            }
+            .space-img-wrapper img {
+                height: 300px;
+            }
+            nav ul {
+                display: none;
+            }
+            .space-hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="kund coffee logo1.webp" alt="Kund Coffee Logo">
+                <span class="logo-text">KUND COFFEE</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="space.html">Our Space</a></li>
+                    <li><a href="amenities.html">Amenities</a></li>
+                    <li><a href="contact.html" class="cta-btn">Visit Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="space-hero">
+        <h1>Explore <span>Our Environment</span></h1>
+        <p>A multi-zone workspace carefully curated to cater to your frame of mind. Discover spaces that inspire productivity, connection, and calm focus.</p>
+    </section>
+
+    <section class="space-showcase-section">
+        <div class="space-grid">
+            
+            <div class="space-row">
+                <div class="space-img-wrapper">
+                    <img src="working-professionals.jpg" alt="Professionals working at Kund Coffee">
+                </div>
+                <div class="space-description">
+                    <h2>The Professional Zone</h2>
+                    <p>Designed for corporate remote builders, creators, and freelancers who need a clean desk ecosystem. Experience ergonomically responsive seating arrangements paired with professional warm task lighting.</p>
+                    <p>Perfect for long sessions of uninterrupted code shipping, copy curation, or structural planning alongside fellow driven professionals.</p>
+                    <ul class="space-features-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Power Outlets</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Quiet Workspace</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Task Lighting</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Comfort Seats</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="space-row reverse">
+                <div class="space-img-wrapper">
+                    <img src="students-assignment.jpg" alt="Students writing and working on assignments">
+                </div>
+                <div class="space-description">
+                    <h2>Study & Research Desks</h2>
+                    <p>A calm retreat optimized for students, academic researchers, and avid readers. Surrounded by our built-in library stacks, this zone balances warm creative curiosity with academic drive.</p>
+                    <p>Grab a stack of tech logs or philosophy books, spread out your reference materials, and focus completely on your upcoming presentation or test project.</p>
+                    <ul class="space-features-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Library Access</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Desk Space</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Inspiring Vibe</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Calm Ambiance</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="space-row">
+                <div class="space-img-wrapper">
+                    <img src="terrace-cool-time.jpg" alt="Relaxing open air rooftop terrace deck">
+                </div>
+                <div class="space-description">
+                    <h2>The Open-Air Terrace Deck</h2>
+                    <p>Unwind and recalibrate your thoughts on our breezy, sun-drenched rooftop patio. If you prefer brainstorming under natural light or taking a rewarding mental pause between deep work sprints, our view overlooks the neighborhood skyline.</p>
+                    <p>Perfect for refreshing casual chats, networking mixers, cold brews, or setting up a sunset laptop session.</p>
+                    <ul class="space-features-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Open Sky Views</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Natural Sunlight</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Plant Aesthetics</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Casual Seating</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="space-row reverse">
+                <div class="space-img-wrapper">
+                    <img src="focus-meeting.jpg" alt="Team discussion group session">
+                </div>
+                <div class="space-description">
+                    <h2>Collaborative Hub & Meetings</h2>
+                    <p>Need to sync with your team, outline wireframes, or host a focus strategy session? Our group dynamic areas are configured to support collaborative communication without disrupting the quiet work zones.</p>
+                    <p>Gather your squad, share perspectives over hot cups of pour-overs, and push your team targets forward smoothly.</p>
+                    <ul class="space-features-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Team Seating</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Project Syncs</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Direct Service</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Event Friendly</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Kund Coffee. All rights reserved. Designed for Productivity.</p>
+    </footer>
+
+</body>
+</html>
