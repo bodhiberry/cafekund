@@ -342,6 +342,34 @@
                 border-radius: 25px;
             }
         }
+
+        /* Centered Map Section */
+.map-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.map-container h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: var(--text-dark);
+}
+
+.map-wrapper {
+    max-width: 800px; /* Adjust this width to match your layout preference */
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-radius: 12px;
+    overflow: hidden; /* Keeps the iframe corners rounded */
+}
+
+.map-wrapper iframe {
+    width: 100%; /* Makes the map fill the wrapper nicely */
+    display: block;
+}
     </style>
 </head>
 <body>
@@ -453,7 +481,20 @@
     </section>
 
 
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.0018870648632!2d85.347561!3d27.7480878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1953b957af89%3A0x67029d56f5258233!2sKund%20Coffee%20%7C%20Specialty%20Coffee%20Shop%20in%20Golfutar%2C%20Kathmandu!5e0!3m2!1sen!2snp!4v1781685637669!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+   <section class="map-container">
+    <h2>Location Map</h2>
+    <div class="map-wrapper">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.0018870648632!2d85.347561!3d27.7480878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1953b957af89%3A0x67029d56f5258233!2sKund%20Coffee%20%7C%20Specialty%20Coffee%20Shop%20in%20Golfutar%2C%20Kathmandu!5e0!3m2!1sen!2snp!4v1781685637669!5m2!1sen!2snp" 
+            width="600" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</section>
 
     <footer>
        <p>&copy; 2026 Kund Coffee, Mobile: +977-9763681946. All rights reserved. Designed for Productivity.</p>
