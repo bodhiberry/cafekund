@@ -9,69 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-
-
-            /* Desktop Styles (Default defaults from previous code) */
-    .menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        color: var(--text-dark);
-        font-size: 24px;
-        cursor: pointer;
-        z-index: 1001;
-    }
-
-    /* Mobile Responsive Logic */
-    @media (max-width: 968px) {
-        .menu-toggle {
-            display: block; /* Show hamburger button on mobile */
-        }
-
-        nav {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            max-height: 0; /* Hidden by default */
-            overflow: hidden;
-            transition: max-height 0.3s ease-in-out;
-        }
-
-        /* When active, expand menu container drop down */
-        nav.active {
-            max-height: 300px; 
-            border-bottom: 2px solid var(--primary);
-        }
-
-        nav ul {
-            flex-direction: column;
-            gap: 0;
-            padding: 10px 0;
-        }
-
-        nav ul li {
-            width: 100%;
-            text-align: center;
-        }
-
-        nav a {
-            display: block;
-            padding: 15px 0;
-            width: 100%;
-        }
-
-        /* Adjust global button inside mobile drawer list items */
-        .cta-btn {
-            border-radius: 0;
-            display: inline-block;
-            width: 80%;
-            margin: 10px auto;
-            border-radius: 25px;
-        }
-    }
         :root {
             --primary: #C32026; /* Logo Red */
             --primary-dark: #8A1418;
@@ -113,6 +50,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 20px;
+            position: relative;
         }
 
         .logo {
@@ -138,9 +76,19 @@
             display: flex;
             list-style: none;
             gap: 30px;
+            align-items: center;
         }
 
-       
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
 
         .cta-btn {
             background-color: var(--primary);
@@ -153,6 +101,19 @@
         .cta-btn:hover {
             background-color: var(--primary-dark);
             color: white;
+        }
+
+        /* Responsive Mobile Toggle Button Container */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 5px;
+            outline: none;
         }
 
         /* Hero Section */
@@ -286,6 +247,7 @@
         .about-text h2 {
             font-size: 36px;
             margin-bottom: 25px;
+            color: var(--text-dark);
         }
 
         .about-text p {
@@ -363,182 +325,3 @@
             border: none;
             padding: 15px;
             border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .submit-btn:hover {
-            background-color: var(--primary-dark);
-        }
-
-        /* Footer */
-        footer {
-            background-color: #1A1A1A;
-            color: #FFFFFF;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        footer p {
-            opacity: 0.7;
-            font-size: 14px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 968px) {
-            .showcase, .about-section, .contact-container {
-                grid-template-columns: 1fr;
-            }
-            .side-imgs {
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: none;
-            }
-            .side-img {
-                height: 250px;
-            }
-            nav ul {
-                display: none; /* Simplification for single-page layout preview */
-            }
-            .hero h1 {
-                font-size: 36px;
-            }
-        }
-    </style>
-
-
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const navMenu = document.getElementById('nav-menu');
-        const toggleIcon = menuBtn.querySelector('i');
-
-        menuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            
-            // Switch icon look dynamically between bars and cross button
-            if (navMenu.classList.contains('active')) {
-                toggleIcon.className = 'fa-solid fa-xmark';
-            } else {
-                toggleIcon.className = 'fa-solid fa-bars';
-            }
-        });
-    });
-</script>
-</head>
-<body>
-
-    <header>
-    <div class="nav-container">
-        <a href="index.html" class="logo">
-            <img src="kund coffee logo1.webp" alt="Kund Coffee Logo">
-            <span class="logo-text">KUND COFFEE</span>
-        </a>
-        
-        <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle navigation">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-
-        <nav id="nav-menu">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="space.html">Our Space</a></li>
-                <li><a href="amenities.html">Amenities</a></li>
-                <li><a href="contact.html" class="cta-btn">Visit Us</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Your Ultimate <span>Coworking Cafe</span> Escape</h1>
-            <p>Fuel your productivity with premium brews, calm study vibes, inspiring literature, and a sunlit rooftop deck designed for creators and innovators.</p>
-        </div>
-        
-        <div class="showcase" id="space">
-            <img src="IMG_0046.jpg" alt="Kund Coffee Indoor Library Workspace" class="main-img">
-            <div class="side-imgs">
-                <img src="IMG_0050.jpg" alt="Kund Coffee Rooftop Deck" class="side-img">
-                <img src="IMG_0049.jpg" alt="Kund Coffee Indoors window seating" class="side-img">
-            </div>
-        </div>
-    </section>
-
-    <section class="features" id="features">
-        <h2 class="section-title">Built For Deep Work</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <i class="fa-solid fa-wifi"></i>
-                <h3>High-Speed Wifi</h3>
-                <p>Reliable, ultra-fast internet network ensures your video calls and deadlines are never dropped.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fa-solid fa-book-open"></i>
-                <h3>Curated Book</h3>
-                <p>From tech bios like Steve Jobs to profound philosophies, get inspired between work sessions.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fa-solid fa-mug-hot"></i>
-                <h3>Artisanal Coffee</h3>
-                <p>Expertly roasted beans crafted into perfect espressos to power your daily grind.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fa-solid fa-cloud-sun"></i>
-                <h3>Rooftop & Indoor Options</h3>
-                <p>Switch between a climate-controlled study lounge and a beautiful, open-air sunlit terrace.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="about-section" id="about">
-        <div class="about-text">
-            <h2>Where Focus Meets Comfort</h2>
-            <p>Kund Coffee isn’t just another cafe; it’s a community sanctuary designed specifically for remote teams, freelancers, students, and thinkers.</p>
-            <p>Our indoor spaces blend elegant cultural aesthetic touchpoints with comfortable modular bench seating and focused tracking lights. Need a screen break? Browse through our handpicked reading stack featuring works on technology, business innovation, and timeless history.</p>
-        </div>
-        <div class="about-img-container">
-            <img src="IMG_0051.jpg" alt="Inspirational books at Kund Coffee" class="about-img">
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Drop By Today</h3>
-                <p style="color: var(--text-light); margin-bottom: 30px;">No subscription required. Walk right in, grab your favorite spot, order a warm cup, and get to creating.</p>
-                
-                <div class="info-item">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <span>Golfutar, Basketball Court</span>
-                </div>
-                <div class="info-item">
-                    <i class="fa-solid fa-clock"></i>
-                    <span>Open Daily: 7:00 AM - 9:00 PM</span>
-                </div>
-                <div class="info-item">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span>info@kundcoffee.com</span>
-                </div>
-
-                <div class="info-item">
-                    <i class="fa-solid fa-phone"></i>
-    <span>+977-9763681946</span>
-                </div>
-            </div>
-            
-            <form class="contact-form" onsubmit="event.preventDefault();">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email Address" required>
-                <textarea rows="5" placeholder="Inquiry about space booking or event hosting..." required></textarea>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Kund Coffee. All rights reserved. Designed for Productivity.</p>
-    </footer>
-
-</body>
-</html>
