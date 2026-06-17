@@ -473,4 +473,43 @@
 
     <section class="map-section">
         <iframe 
-            src="
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3530.825622080517!2d85.3444458!3d27.753556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb194f2bb7f551%3A0xe5a3c2cfd77f3e8c!2sGolfutar%20Basketball%20Court!5e0!3m2!1sen!2snp!4v1710000000000!5m2!1sen!2snp" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </section>
+
+    <footer>
+       <p>&copy; 2026 Kund Coffee, Mobile: +977-9763681946. All rights reserved. Designed for Productivity.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const navMenu = document.getElementById('nav-menu');
+            const toggleIcon = menuBtn.querySelector('i');
+
+            menuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    toggleIcon.className = 'fa-solid fa-xmark';
+                } else {
+                    toggleIcon.className = 'fa-solid fa-bars';
+                }
+            });
+
+            const navLinks = navMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        toggleIcon.className = 'fa-solid fa-bars';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
